@@ -1,0 +1,51 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+
+{# Onprecise en plus du config twig.yaml qu'on veut un theme bootstrap dans le formulaire  #}
+{% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
+
+<br>
+<h1>
+    {% if editMode %}
+    Modifier un article
+    {% else %}
+    Creation d'un article
+    {% endif %}
+</h1>
+<br>
+
+{# Methode 1 #}
+{#
+<form action="" method="post">
+    <input type="text" name="title" placeholder="Titre de l'article" id="">
+    <input type="text" name="content" placeholder="Contenu de l'article" id="">
+    <input type="text" name="image" placeholder="Image de l'article" id="">
+    <button type="submit" class="btn btn-primary">Enregistrer</button>
+
+</form>
+#}
+
+{{ form_start(formArticle)}}
+
+{{ form_row(formArticle.title)}}
+<br>
+{{ form_row(formArticle.content)}}
+<br>
+{{ form_row(formArticle.image)}}
+
+
+
+<button type="submit" class="btn btn-primary">
+    {% if editMode %}
+    Modifier
+    {% else %}
+    Enregistrer
+    {% endif %}
+</button>
+
+{{form_end(formArticle)}}
+
+
+{% endblock %}
